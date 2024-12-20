@@ -1,6 +1,6 @@
 'use client';
 
-import './page.module.css';
+import styles from './page.module.scss';
 import { useState } from 'react';
 import TaskControls from '@/components/TaskControls/TaskControls';
 import TaskList from '@/components/TaskList/TaskList';
@@ -12,7 +12,7 @@ export default function Home() {
         setShowDone((prevState) => !prevState);
     };
     return (
-        <div className="">
+        <div className={styles.main}>
             <TaskControls onToggleTodos={toggleTodos} showDone={showDone} />
             <TaskList showDone={showDone} />
         </div>

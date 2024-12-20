@@ -1,0 +1,24 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/mixins' as mixins;
+
+.statusButton {
+    width: 100%;
+    padding: 10px;
+    border: none;
+
+    cursor: pointer;
+    background: vars.$primary-color;
+    color: vars.$text-color;
+    @include mixins.transition();
+}
+
+.statusButton:hover {
+    opacity: 0.8;
+    background: vars.$hover-color;
+}
+
+.statusButton:focus {
+    outline: none;
+    opacity: 0.8;
+    background: vars.$hover-color;
+}

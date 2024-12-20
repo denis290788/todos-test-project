@@ -1,0 +1,58 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/mixins' as mixins;
+
+.controlBar {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 600px;
+    box-sizing: border-box;
+    padding: 10px;
+    background: linear-gradient(225deg, vars.$primary-color, vars.$secondary-color);
+    border-radius: 5px;
+    position: sticky;
+    top: 10px;
+    z-index: 1000;
+    box-shadow: vars.$box-shadow;
+}
+
+.buttonsSection {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    border-radius: 5px;
+    overflow: hidden;
+    flex: 1;
+}
+
+.controlButton {
+    padding: 7px;
+    border: none;
+    @include mixins.transition();
+    cursor: pointer;
+    background: vars.$primary-color;
+    color: vars.$text-color;
+    width: 100%;
+}
+
+.controlButton:hover {
+    opacity: 0.8;
+    background: vars.$hover-color;
+}
+
+.controlButton:focus {
+    outline: none;
+    opacity: 0.8;
+    background: vars.$hover-color;
+}
+
+@media (max-width: 768px) {
+    .controlBar {
+        width: 100%;
+        padding: 5px;
+    }
+
+    .buttonsSection {
+        justify-content: center;
+    }
+}

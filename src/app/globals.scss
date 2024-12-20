@@ -1,8 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
 
+html {
+    scrollbar-gutter: stable;
+}
+
 body {
     background-color: #f4f4f4;
     font-family: 'Nunito', sans-serif;
+    max-width: 1280px;
+    height: 100vh;
+    margin: auto;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
 }
 
 * {
@@ -26,8 +35,8 @@ a {
     text-decoration: none;
 }
 
-.header-text {
-    color: rgb(64, 214, 152);
+.text {
+    color: #4ac77c;
     text-align: center;
     margin: 30px;
 }

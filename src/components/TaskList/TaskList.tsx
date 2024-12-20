@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from '@/store';
 import { useEffect } from 'react';
 import { getTasks, selectorTasksData, selectorTasksStatus } from '@/store/taskSlice';
 import TaskCard from '../TaskCard/TaskCard';
+import styles from './TaskList.module.scss';
 
 interface TaskListProps {
     showDone: boolean;
@@ -24,13 +25,13 @@ const TaskList: React.FC<TaskListProps> = ({ showDone }) => {
 
     return (
         <div>
-            {status === 'Loading' && <p className="">Загружаю</p>}
-            {status === 'Failed' && <p className="">Какая-то ошибка</p>}
+            {status === 'Loading' && <p className={styles.message}>Загружаю</p>}
+            {status === 'Failed' && <p className={styles.message}>Какая-то ошибка</p>}
 
             {status === 'Success' && (
-                <div className="">
+                <div className={styles.tasksList}>
                     {filteredTasks.length === 0 ? (
-                        <p className="">Тут пусто ):</p>
+                        <p className={styles.message}>Тут пусто ):</p>
                     ) : (
                         filteredTasks.map((task) => (
                             <div key={task.id}>

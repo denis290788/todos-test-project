@@ -1,0 +1,79 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/mixins' as mixins;
+
+.addFormContainer {
+    background: linear-gradient(135deg, vars.$primary-color, vars.$secondary-color);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: vars.$box-shadow;
+}
+
+.formInput {
+    margin: 10px 10px;
+}
+.label {
+    font-weight: bold;
+    font-size: 18px;
+}
+.input {
+    border: 1px solid #ccc;
+    padding: 8px;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 20px;
+    @include mixins.transition();
+}
+.input:focus {
+    outline: none;
+    background-color: vars.$hover-color;
+}
+.input.error {
+    border: 2px solid rgb(244, 88, 88);
+}
+.errorContainer {
+    height: 16px;
+    margin-top: 4px;
+}
+.errorText {
+    color: rgb(244, 88, 88);
+    font-size: 15px;
+}
+
+.buttonSection {
+    display: flex;
+    flex-direction: row;
+    border-radius: 5px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.formButton {
+    padding: 7px;
+    border: none;
+    cursor: pointer;
+    background: vars.$primary-color;
+    color: vars.$text-color;
+    width: 100%;
+    @include mixins.transition();
+}
+
+.formButton:hover {
+    opacity: 0.8;
+    background: vars.$hover-color;
+}
+
+.formButton:focus {
+    outline: none;
+    opacity: 0.8;
+    background: vars.$hover-color;
+}
+
+.formButton:disabled {
+    opacity: 0.8;
+    background: vars.$hover-color;
+}

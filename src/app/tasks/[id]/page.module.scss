@@ -1,0 +1,71 @@
+@use '../../../styles/variables' as vars;
+@use '../../../styles/mixins' as mixins;
+
+.taskDetails {
+    background: linear-gradient(225deg, vars.$primary-color, vars.$secondary-color);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: vars.$box-shadow;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.details {
+    width: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+    word-wrap: break-word;
+}
+
+.title {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.id {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.status {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.buttonSection {
+    display: flex;
+    flex-direction: row;
+    border-radius: 5px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.backButton {
+    padding: 7px;
+    border: none;
+    @include mixins.transition();
+    cursor: pointer;
+    background: vars.$primary-color;
+    color: vars.$text-color;
+    width: 100%;
+}
+
+.backButton:hover {
+    opacity: 0.8;
+    background: vars.$hover-color;
+}
+
+.backButton:focus {
+    outline: none;
+    opacity: 0.8;
+    background: vars.$hover-color;
+}

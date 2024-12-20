@@ -1,0 +1,15 @@
+@import '../../styles/variables';
+
+.tasksList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 600px;
+}
+
+.message {
+    padding: 30px;
+    text-align: center;
+    color: $primary-color;
+    font-size: 50px;
+}

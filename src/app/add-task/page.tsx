@@ -1,12 +1,12 @@
 'use client';
 
+import styles from './page.module.scss';
 import { useAppDispatch } from '@/store';
 import { addTask } from '@/store/taskSlice';
-import { nanoid } from '@reduxjs/toolkit';
 import { useRouter } from 'next/navigation';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import CheckIcon from '@mui/icons-material/Check';
+import AddIcon from '@mui/icons-material/Add';
 
 interface TaskForm {
     id: string;
@@ -28,7 +28,7 @@ const AddTask = () => {
     });
 
     const submit: SubmitHandler<TaskForm> = (data) => {
-        dispatch(addTask({ ...data, id: nanoid(), isDone: false }));
+        dispatch(addTask(data.title));
 
         router.push('/');
 
@@ -38,27 +38,30 @@ const AddTask = () => {
     };
 
     return (
-        <div className="">
-            <h2 className="">Добавь туду!</h2>
+        <div className={styles.addFormContainer}>
+            <h2>Добавь туду!</h2>
             <form className="" onSubmit={handleSubmit(submit)}>
-                <div className="">
-                    <label htmlFor="title" className="">
-                        Название
+                <div className={styles.formInput}>
+                    <label htmlFor="title" className={styles.label}>
+                        Задача
                     </label>
                     <input
-                        className={errors.title ? `'' ''` : ''}
+                        className={errors.title ? `${styles.input} ${styles.error}` : styles.input}
                         id="title"
                         type="text"
                         placeholder="Доделать тестовое?"
                         {...register('title', { required: 'Заголовок обязателен' })}
                     />
-                    <div className="">
-                        {errors.title && <div className="">{errors.title.message}</div>}
+                    <div className={styles.errorContainer}>
+                        {errors.title && (
+                            <div className={styles.errorText}>{errors.title.message}</div>
+                        )}
                     </div>
                 </div>
 
-                <div className="">
+                <div className={styles.buttonSection}>
                     <button
+                        className={styles.formButton}
                         onClick={() => {
                             router.push('/');
                             reset({
@@ -68,8 +71,8 @@ const AddTask = () => {
                     >
                         <ArrowBackIcon />
                     </button>
-                    <button type="submit" disabled={!isValid} className="">
-                        <CheckIcon />
+                    <button className={styles.formButton} type="submit" disabled={!isValid}>
+                        <AddIcon />
                     </button>
                 </div>
             </form>

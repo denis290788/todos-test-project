@@ -1,0 +1,116 @@
+@use '../../styles/variables' as vars;
+@use '../../styles/mixins' as mixins;
+
+.card {
+    background: linear-gradient(45deg, vars.$primary-color, vars.$secondary-color);
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 500px 1fr;
+    gap: 5px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    padding: 10px;
+    box-shadow: vars.$box-shadow;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cardContainer {
+    display: flex;
+    border-radius: 5px;
+    padding: 5px;
+    @include mixins.transition();
+}
+
+.cardContainer:hover {
+    opacity: 0.8;
+    background: vars.$hover-color;
+}
+
+.cardContainer:focus {
+    outline: none;
+    opacity: 0.8;
+    background: vars.$hover-color;
+}
+
+.cardInfo {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    width: 100%;
+}
+
+.cardTitle {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+}
+
+.cardActions {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.cardButton {
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    background: vars.$primary-color;
+    color: vars.$text-color;
+    @include mixins.transition();
+}
+
+.cardButton:hover {
+    opacity: 0.8;
+    background: vars.$hover-color;
+}
+
+.cardButton:focus {
+    outline: none;
+    opacity: 0.8;
+    background: vars.$hover-color;
+}
+
+@media (max-width: 768px) {
+    .card {
+        grid-template-columns: 1fr;
+        grid-auto-flow: row;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin: 0;
+        padding: 10px;
+    }
+
+    .cardContainer {
+        flex-direction: column;
+    }
+
+    .cardInfo {
+        margin-top: 10px;
+        width: 100%;
+        overflow: hidden;
+        margin-bottom: 10px;
+        padding-left: 10px;
+    }
+
+    .cardTitle {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        display: block;
+    }
+
+    .cardActions {
+        flex-direction: row;
+        justify-content: center;
+        margin: 5px;
+    }
+
+    .cardButton {
+        width: 100%;
+    }
+}

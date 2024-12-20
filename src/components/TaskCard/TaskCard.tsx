@@ -6,6 +6,7 @@ import Link from 'next/link';
 import React from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
 import StatusButton from '../StatusButton/StatusButton';
+import styles from './TaskCard.module.scss';
 
 interface TaskCardProps {
     task: TTask;
@@ -20,15 +21,15 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
     };
 
     return (
-        <div className="">
-            <Link href={`/tasks/${task.id}`} className="">
-                <div className="">
-                    <h2 className="">{task.title}</h2>
+        <div className={styles.card}>
+            <Link href={`/tasks/${task.id}`} className={styles.cardContainer}>
+                <div className={styles.cardInfo}>
+                    <h2 className={styles.cardTitle}>{task.title}</h2>
                 </div>
             </Link>
-            <div className="">
+            <div className={styles.cardActions}>
                 <StatusButton taskId={task.id} isDone={task.isDone}></StatusButton>
-                <button onClick={handleDelete} className="">
+                <button onClick={handleDelete} className={styles.cardButton}>
                     <DeleteIcon />
                 </button>
             </div>

@@ -3,23 +3,24 @@ import AddIcon from '@mui/icons-material/Add';
 import TaskIcon from '@mui/icons-material/Task';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useRouter } from 'next/navigation';
+import styles from './TaskControls.module.scss';
 
-interface ProductControlsProps {
+interface TaskControlsProps {
     onToggleTodos: () => void;
     showDone: boolean;
 }
 
-const ProductControls: React.FC<ProductControlsProps> = ({ onToggleTodos, showDone }) => {
+const TaskControls: React.FC<TaskControlsProps> = ({ onToggleTodos, showDone }) => {
     const router = useRouter();
 
     return (
-        <div className="">
-            <div className="">
-                <button onClick={onToggleTodos} className="">
+        <div className={styles.controlBar}>
+            <div className={styles.buttonsSection}>
+                <button onClick={onToggleTodos} className={styles.controlButton}>
                     {!showDone ? <TaskIcon fontSize="large" /> : <ArrowBackIcon fontSize="large" />}
                 </button>
                 <button
-                    className=""
+                    className={styles.controlButton}
                     onClick={() => {
                         router.push('/add-task');
                     }}
@@ -31,4 +32,4 @@ const ProductControls: React.FC<ProductControlsProps> = ({ onToggleTodos, showDo
     );
 };
 
-export default ProductControls;
+export default TaskControls;

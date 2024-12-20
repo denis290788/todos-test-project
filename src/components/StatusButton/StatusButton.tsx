@@ -4,6 +4,7 @@ import { useAppDispatch } from '@/store';
 import { updateStatus } from '@/store/taskSlice';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import styles from './StatusButton.module.scss';
 
 interface StatusButtonProps {
     taskId: string;
@@ -19,7 +20,7 @@ const StatusButton: React.FC<StatusButtonProps> = ({ taskId, isDone }) => {
     };
 
     return (
-        <button onClick={handleStatus} className="">
+        <button onClick={handleStatus} className={styles.statusButton}>
             {isDone ? <CheckCircleIcon /> : <CheckCircleOutlineIcon />}
         </button>
     );

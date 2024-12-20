@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export type TTask = {
     id: string;
@@ -42,8 +42,15 @@ export const taskSlice = createSlice({
     name: 'tasks',
     initialState,
     reducers: {
-        addTask: (state, action) => {
-            state.data.push(action.payload);
+        addTask: (state, action: PayloadAction<string>) => {
+            const maxId = state.data.reduce((max, task) => Math.max(max, Number(task.id)), 0);
+            const newId = maxId + 1;
+
+            state.data.push({
+                id: newId.toString(),
+                title: action.payload,
+                isDone: false,
+            });
         },
         deleteTask: (state, action) => {
             state.data = state.data.filter((task) => task.id !== action.payload);
