@@ -22,6 +22,7 @@ const TaskList: React.FC<TaskListProps> = ({ showDone }) => {
     }, [dispatch, status]);
 
     const filteredTasks = showDone ? tasks.filter((t) => t.isDone) : tasks;
+    const sortedTasks = [...filteredTasks].sort((a, b) => Number(b.id) - Number(a.id));
 
     return (
         <div>
@@ -30,10 +31,10 @@ const TaskList: React.FC<TaskListProps> = ({ showDone }) => {
 
             {status === 'Success' && (
                 <div className={styles.tasksList}>
-                    {filteredTasks.length === 0 ? (
+                    {sortedTasks.length === 0 ? (
                         <p className={styles.message}>Тут пусто ):</p>
                     ) : (
-                        filteredTasks.map((task) => (
+                        sortedTasks.map((task) => (
                             <div key={task.id}>
                                 <TaskCard task={task} />
                             </div>
